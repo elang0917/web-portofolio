@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pemesanan — PT. Pesona Banyu Bening</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">PT. PESONA BANYU BENING INDONESIA</div>
+      <nav class="nav">
+        <a href="index.html">Beranda</a>
+        <a href="products.html">Produk & Layanan</a>
+        <a href="booking.html" class="active">Pemesanan</a>
+      </nav>
+      <a href="https://wa.link/j4xs15" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Hubungi Kami</a>
+    </div>
+  </header>
+
+  <main class="container booking-page">
+    <section class="booking-hero">
+      <h1>Sistem Pemesanan Armada (Full Include)</h1>
+      <p class="muted">Silakan lengkapi detail sesuai dengan kebutuhan perjalanan Anda.</p>
+      <div class="hero-cta">
+        <a href="#bookingForm" class="btn btn-cta">Sewa Big Bus</a>
+      </div>
+    </section>
+
+    <div class="booking-grid">
+      <form class="booking-form" id="bookingForm">
+        <h3>Formulir Sewa Big Bus</h3>
+        <label>Nama Lengkap
+          <input type="text" id="customerName" placeholder="Masukkan nama sesuai KTP" required>
+        </label>
+        <label>No. HP / WhatsApp
+          <input type="tel" id="customerPhone" placeholder="0812-XXXX-XXXX" required>
+        </label>
+        <div class="row">
+          <label>Kapasitas Kursi
+            <select id="capacity">
+              <option value="50">50 Kursi (2-2 Layout)</option>
+              <option value="59">59 Kursi (2-3 Layout)</option>
+            </select>
+          </label>
+          <label>Jumlah Unit
+            <input type="number" id="units" min="1" value="1">
+          </label>
+        </div>
+        <div class="row">
+          <label>Lokasi Penjemputan
+            <input type="text" id="pickupLocation" placeholder="Alamat lengkap penjemputan">
+          </label>
+          <label>Kota Tujuan
+            <input type="text" id="destinationCity" placeholder="Contoh: Bandung, Yogyakarta">
+          </label>
+        </div>
+        <div class="row">
+          <label>Tanggal Keberangkatan
+            <input type="date" id="date" placeholder="dd/mm/yyyy">
+          </label>
+          <label>Durasi (Hari)
+            <input type="number" id="days" min="1" value="1" placeholder="1">
+          </label>
+        </div>
+
+        <h4>Metode Pembayaran</h4>
+        <div class="payment-methods">
+          <label class="pm">
+            <input type="radio" name="pay" value="Transfer Bank" checked>
+            <div class="pm-info">
+              <span class="pm-title">Transfer Bank</span>
+              <span class="pm-desc">BCA / BSI / BRI</span>
+            </div>
+          </label>
+          <label class="pm">
+            <input type="radio" name="pay" value="QRIS Fast Pay">
+            <div class="pm-info">
+              <span class="pm-title">QRIS Fast Pay</span>
+              <span class="pm-desc">Scan QR dengan e-wallet</span>
+            </div>
+          </label>
+        </div>
+      </form>
+
+      <aside class="booking-summary">
+        <div class="availability">
+          <h4>Ketersediaan Unit</h4>
+          <div class="calendar-mini">
+            <div class="calendar-days">
+              <span>MIN</span><span>SEN</span><span>SEL</span><span>RAB</span><span>KAM</span><span>JUM</span><span>SAB</span>
+            </div>
+            <div class="calendar-grid">
+              <span class="day empty"></span>
+              <span class="day">28</span>
+              <span class="day">29</span>
+              <span class="day">30</span>
+              <span class="day busy">1</span>
+              <span class="day available">2</span>
+              <span class="day available">3</span>
+              <span class="day available">4</span>
+              <span class="day available">5</span>
+              <span class="day available">6</span>
+              <span class="day available">7</span>
+              <span class="day available">8</span>
+              <span class="day available">9</span>
+              <span class="day unavailable">10</span>
+              <span class="day available">11</span>
+            </div>
+            <div class="calendar-legend">
+              <span><span class="legend-dot available"></span> Tersedia</span>
+              <span><span class="legend-dot unavailable"></span> Penuh</span>
+            </div>
+          </div>
+        </div>
+        <div class="summary-box" id="priceBox">
+          <h4>Ringkasan Biaya</h4>
+          <div class="line"><span>Biaya Full Include</span><span id="basePrice">Rp 1.500.000</span></div>
+          <div class="line"><span>Layanan Sopir</span><span id="driverPrice">Rp 1.000.000</span></div>
+            <div class="line small"><span>Durasi</span><span id="durationCount">x1</span></div>
+            <div class="total">
+              <div class="total-label">TOTAL PEMBAYARAN (DP)</div>
+              <div id="totalPrice">Rp 2.500.000</div>
+            </div>
+            <button class="btn btn-cta" id="confirmBtn">Konfirmasi Pesanan</button>
+            <p class="summary-note">Dengan mengklik tombol di atas, Anda menyetujui Syarat dan Ketentuan layanan kami.</p>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <div id="qrisModal" class="modal-overlay" style="display:none">
+    <div class="modal-dialog">
+      <button class="modal-close" type="button" aria-label="Tutup">×</button>
+      <h3>QRIS Fast Pay</h3>
+      <p>Silakan pindai kode QR berikut dengan aplikasi e-wallet Anda untuk melanjutkan pembayaran.</p>
+      <div class="qris-code">
+        <img src="foto/Qris.jpg.jpeg" alt="Kode QRIS Fast Pay">
+      </div>
+      <button class="btn btn-cta modal-ok" type="button">Tutup</button>
+    </div>
+  </div>
+
+  <!-- Pembayaran Berhasil (hidden by default) -->
+  <section id="paymentSuccess" class="success-page" style="display:none">
+    <div class="success-inner container">
+      <div class="success-icon" aria-hidden="true">
+        <svg width="84" height="84" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="12" fill="#e6f3f4"/><path d="M8.5 12.8l1.9 1.9 4.6-5" stroke="#0b6774" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h2 class="success-title">Pembayaran Berhasil!</h2>
+      <p class="success-sub">Terima kasih atas kepercayaan Anda.</p>
+
+      <div class="success-card">
+        <div class="order-row"><span class="label">NOMOR PESANAN</span><span class="value" id="orderNumberValue">PBB-2026-001</span></div>
+        <div class="details-grid">
+          <div><span class="detail-label">Nama: </span><span id="successName">Nama Pelanggan</span></div>
+          <div><span class="detail-label">No. HP: </span><span id="successPhone">0812-XXXX-XXXX</span></div>
+          <div><span class="detail-label">Tanggal: </span><span id="successDate">dd/mm/yyyy</span></div>
+          <div><span class="detail-label">Metode: </span><span id="successMethod">Transfer Bank</span></div>
+        </div>
+        <div class="order-sections">
+          <div class="mini"><strong>Asal</strong><div id="successOrigin">Bumiayu</div></div>
+          <div class="mini"><strong>Tujuan</strong><div id="successDestinationAlt">Yogyakarta</div></div>
+        </div>
+        <div class="armada">Armada<br/><strong id="successArmada">Banyu Bening New Jetbus 3 SHD+</strong></div>
+        <div class="total-line"><span>Total Pembayaran (DP)</span><span class="amount" id="successTotal">Rp 2.500.000</span></div>
+      </div>
+
+      <div class="info-box">Pembayaran Anda sedang diverifikasi oleh admin. Terimakasih telah mempercayakan perjalanan wisata Anda bersama PT. Pesona Banyu Bening Indonesia.</div>
+
+      <div class="success-actions">
+        <a href="index.html" class="btn btn-cta">Kembali ke Beranda</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+        <div class="col company">
+          <h4>PT. PESONA BANYU BENING INDONESIA</h4>
+          <p>Penyedia solusi perjalanan jauh dan pariwisata dengan standar keamanan dan fasilitas lengkap.</p>
+        </div>
+        <div class="col links">
+          <h5>Tautan Cepat</h5>
+          <ul>
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="products.html">Produk & Layanan</a></li>
+            <li><a href="booking.html">Pemesanan</a></li>
+          </ul>
+        </div>
+        <div class="col support">
+          <h5>Bantuan</h5>
+          <ul>
+            <li><a href="#">Pusat Bantuan</a></li>
+            <li><a href="#">Kebijakan Privasi</a></li>
+            <li><a href="#">Syarat & Ketentuan</a></li>
+          </ul>
+        </div>
+        <div class="col contact">
+          <h5>KONTAK</h5>
+          <ul class="contact-list">
+            <li><span class="icon icon-location" aria-hidden="true"></span><span>Bumiayu, Brebes</span></li>
+            <li><span class="icon icon-phone" aria-hidden="true"></span><span>+62 882 2539 7049</span></li>
+            <li><span class="icon icon-mail" aria-hidden="true"></span><span>ppbindonesia.co.id</span></li>
+          </ul>
+        </div>
+      <div class="footer-note">© 2024 PT. PESONA BANYU BENING INDONESIA. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
